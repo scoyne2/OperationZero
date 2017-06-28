@@ -1,0 +1,50 @@
+﻿@model OperationZero.Models.CoreMeasuresObject  
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/CoreMeasures.js")
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+         @Html.HiddenFor(x => x.connectionObject.isConnected, new { @id = "isConnected", Value = Model.connectionObject.isConnected})     
+         @Html.HiddenFor(x => x.connectionObject.error, new { @id = "errorMessage", Value = Model.connectionObject.error})
+      
+        if (Model.connectionObject.isConnected == false)
+        { 
+            @CustomHelper.AlertBoxLink("isConnectText","/Home/Index" ,"Please <strong>Connect to a database </strong> in order to begin.","info","refresh")
+        }
+        if (Model.connectionObject.error != null)
+        {   
+            @CustomHelper.AlertBox("errorMessageText","<strong>YIKES!! Fatal Error:</strong> "+ Model.connectionObject.error,"danger","warning-sign")   
+        }   
+    
+        <div class="input-group" style="margin-top: 1.5%; width:55%">
+            <span class="input-group-addon" id="basic-addonServer">@Html.Label("Server")</span>
+            @Html.TextBoxFor(x => x.connectionObject.ServerSelectedName,
+            new {@id="serverSelectedName", @type="text", @class="form-control", @readonly="true" })  
+        </div>
+    
+        <div class="input-group" style="margin-top: 1.5%; width:55%">
+            <span class="input-group-addon"id="basic-parameter1">@Html.LabelFor(x => x.parameter1)</span>
+            @Html.TextBoxFor(x => x.connectionObject.DatabaseSelectedName,
+            new {@id="databaseSelectedName", @type="text", @class="form-control", @readonly="true" })  
+        </div>
+
+        <div class="input-group" style="margin-top: 1.5%; width:55%">
+            <span class="input-group-addon"id="basic-parameter2">@Html.LabelFor(x => x.parameter2)</span>
+            @Html.TextBoxFor(x => x.parameter2, new {@id="parameter2", @type="text", @class="form-control" })         
+        </div>
+                
+        <div class="input-group" style="margin-top: 1.5%; width:55%">
+            <span class="input-group-addon"id="basic-parameter3">@Html.LabelFor(x => x.parameter3)</span>
+            @Html.TextBoxFor(x => x.parameter3, new {@id="parameter3", @type="text", @class="form-control" })            
+        </div>
+        
+        <div class="input-group" style="margin-top: 1.5%; width:55%">
+            <span class="input-group-addon"id="basic-parameter4">@Html.LabelFor(x => x.parameter4)</span>
+            @Html.TextBoxFor(x => x.parameter4, new {@id="parameter4", @type="text", @class="form-control" })  
+        </div>
+   
+        <button style="margin-top: 1.5%" id="submitButton" class="btn btn-success" type="submit" value="Run Core Measure Message Creation" >Run Core Measure Message Creation</button>     
+    }
+
+</div>

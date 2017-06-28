@@ -1,0 +1,56 @@
+﻿@model OperationZero.Models.ConnectionObject 
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Connection.js")
+
+<div class="container">
+    @using (Html.BeginForm())
+    {    
+        if (Model.isConnected == true)
+            {                   
+                @CustomHelper.AlertBox("isConnectText","<strong>Connected </strong> to "+ Model.DatabaseSelectedName,"success","ok")        
+            }  else
+            {
+                @CustomHelper.AlertBox("isConnectText","Please <strong>Connect to a database </strong> in order to begin.","info","refresh")
+            }  
+   
+        @Html.HiddenFor(x => x.isConnected, new { @id = "isConnected", Value = Model.isConnected})
+        @Html.HiddenFor(x => x.clearSession, new { @id = "clearSession", Value = Model.clearSession})
+ 
+        <div class="row">
+            <div class ="dropdownList col-md-6" title="Select a Server">
+                @Html.DropDownListFor(x=>x.ServerSelected, new SelectList(Model.Servers, "ServerId", "ServerAddress"),
+                "---Select A Server ---", new {@id="ServerDropDownList", @class = "form-control" })
+            </div>
+        </div>
+
+        if (Model.Databases != null )
+        {      
+           <div class="row">
+               <div class ="dropdownList col-md-6" style="margin-top: .5%" title="Select a Database">
+                    @Html.DropDownListFor(x=>x.DatabaseSelected, new SelectList(Model.Databases, "DatabaseId", "DatabaseName"),
+                    "---Select A Database ---", new {@id="DatabaseDropDownList", @class = "form-control"})
+                </div>  
+            </div>  
+    
+        }  else
+        {
+           <div class="row">
+               <div class ="col-md-6">
+                   <select class="form-control" id="DatabaseDropDownList" name="DatabaseSelected" style="margin-top: .5%" disabled title="Please Select a Server First">>
+                    <option value="">---Select A Database ---</option>   
+                   </select>
+               </div>         
+           </div> 
+        }
+        <div class="row"> 
+            <div class="btn-group col-md-3" role="group" aria-label="Connection Button Group" style="margin-top: 1.5%">
+                    <button  id="submitButton" class="btn btn-success" type="submit" value="Connect" ><i class="glyphicon glyphicon-ok" aria-hidden="true"></i> Connect </button> 
+                    <button  id="disconnectButton" class="btn btn-danger" type="submit" value="Disconnect" ><i class="glyphicon glyphicon-remove" aria-hidden="true"></i>  Disconnect </button>
+            </div>
+        </div>
+    }
+</div>
+
+ 
+
+    
