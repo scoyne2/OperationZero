@@ -20,9 +20,9 @@
             }            
     
         if (Model.connectionObject.error != null)
-        {      
-            @CustomHelper.AlertBox("errorMessageText","<strong>YIKES!! Fatal Error:</strong> "+ Model.connectionObject.error,"danger","warning-sign")   
-         }  
+	        {      
+	            @CustomHelper.AlertBox("errorMessageText","<strong>YIKES!! Fatal Error:</strong> "+ Model.connectionObject.error,"danger","warning-sign")   
+	        }  
     
         <div id="dataSnifferInputs">      
             <div class="input-group" style="margin-top: 1.5%; width:55%">
@@ -45,7 +45,6 @@
             </div>
             @Html.HiddenFor(x => x.parameter2, new { @id = "parameter2Data" }) 
         
-               
         <div class="row"> 
             <div class="btn-group col-md-6" role="group" aria-label="Sniffer Button Group" style="margin-top: 1.5%">
                      <button id="submitButton" class="btn btn-info" type="submit" value="Process and Display Results"><i class="glyphicon glyphicon-refresh" aria-hidden="true"></i> Process and Display Results</button>
