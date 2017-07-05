@@ -83,3 +83,5 @@
 \\Mac\Home\Documents\OperationZero\OperationZero\obj\Debug\OperationZero.csproj.App.config
 \\Mac\Home\Documents\OperationZero\OperationZero\obj\Debug\OperationZero.dll
 \\Mac\Home\Documents\OperationZero\OperationZero\obj\Debug\OperationZero.pdb
+\\Mac\Home\Documents\OperationZero\OperationZero\bin\WebGrease.dll
+\\Mac\Home\Documents\OperationZero\OperationZero\obj\Debug\OperationZero.csprojResolveAssemblyReference.cache
